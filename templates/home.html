@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Churn Prediction</title>
+    <style>
+        body {
+            background-color: powderblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <form action="http://localhost:5000/" method="POST">
+                <fieldset>
+                    <legend>Gender:</legend>
+                    <input type="radio" id="query1" name="query1" value="Male">
+                    <label for="query1">MALE</label><br>
+
+                    <input type="radio" id="query1" name="query1" value="Female">
+                    <label for="query1">FEMALE</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Senior Citizen:</legend>
+                    <input type="radio" id="query2" name="query2" value="0">
+                    <label for="query2">NO</label><br>
+
+                    <input type="radio" id="query2" name="query2" value="1">
+                    <label for="query2">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Partner:</legend>
+                    <input type="radio" id="query3" name="query3" value="No">
+                    <label for="query3">NO</label><br>
+
+                    <input type="radio" id="query3" name="query3" value="Yes">
+                    <label for="query3">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Dependents:</legend>
+                    <input type="radio" id="query4" name="query4" value="No">
+                    <label for="query4">NO</label><br>
+
+                    <input type="radio" id="query4" name="query4" value="Yes">
+                    <label for="query4">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Monthly Charges:</legend>
+                    <textarea class="form-control" rows="2" id="query5" name="query5" autofocus>{{query5}}</textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>Total Charges:</legend>
+                    <textarea class="form-control" rows="2" id="query6" name="query6" autofocus>{{query6}}</textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>Phone Service:</legend>
+                    <input type="radio" id="query7" name="query7" value="No">
+                    <label for="query7">NO</label><br>
+
+                    <input type="radio" id="query7" name="query7" value="Yes">
+                    <label for="query7">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Multiple Lines:</legend>
+                    <input type="radio" id="query8" name="query8" value="No">
+                    <label for="query8">NO</label><br>
+                    <input type="radio" id="query8" name="query8" value="No phone service">
+                    <label for="query8">NO Phone Service</label><br>
+                    <input type="radio" id="query8" name="query8" value="Yes">
+                    <label for="query8">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Internet Service:</legend>
+                    <input type="radio" id="query9" name="query9" value="No">
+                    <label for="query9">NO</label><br>
+                    <input type="radio" id="query9" name="query9" value="DSL">
+                    <label for="query9">DSL</label><br>
+                    <input type="radio" id="query9" name="query9" value="Fiber optic">
+                    <label for="query9">FIBER OPTIC</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Online Security:</legend>
+                    <input type="radio" id="query10" name="query10" value="No">
+                    <label for="query10">NO</label><br>
+                    <input type="radio" id="query10" name="query10" value="No internet service">
+                    <label for="query10">NO Internet Service</label><br>
+                    <input type="radio" id="query10" name="query10" value="Yes">
+                    <label for="query10">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Online Backup:</legend>
+                    <input type="radio" id="query11" name="query11" value="No">
+                    <label for="query11">NO</label><br>
+                    <input type="radio" id="query11" name="query11" value="No internet service">
+                    <label for="query11">NO Internet Service</label><br>
+                    <input type="radio" id="query11" name="query11" value="Yes">
+                    <label for="query11">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Device Protection:</legend>
+                    <input type="radio" id="query12" name="query12" value="No">
+                    <label for="query12">NO</label><br>
+                    <input type="radio" id="query12" name="query12" value="No internet service">
+                    <label for="query12">NO Internet Service</label><br>
+                    <input type="radio" id="query12" name="query12" value="Yes">
+                    <label for="query12">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Tech Support:</legend>
+                    <input type="radio" id="query13" name="query13" value="No">
+                    <label for="query13">NO</label><br>
+                    <input type="radio" id="query13" name="query13" value="No internet service">
+                    <label for="query13">NO Internet Service</label><br>
+                    <input type="radio" id="query13" name="query13" value="Yes">
+                    <label for="query13">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Streaming TV:</legend>
+                    <input type="radio" id="query14" name="query14" value="No">
+                    <label for="query14">NO</label><br>
+                    <input type="radio" id="query14" name="query14" value="No internet service">
+                    <label for="query14">NO Internet Service</label><br>
+                    <input type="radio" id="query14" name="query14" value="Yes">
+                    <label for="query14">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Streaming Movies:</legend>
+                    <input type="radio" id="query15" name="query15" value="No">
+                    <label for="query15">NO</label><br>
+                    <input type="radio" id="query15" name="query15" value="No internet service">
+                    <label for="query15">NO Internet Service</label><br>
+                    <input type="radio" id="query15" name="query15" value="Yes">
+                    <label for="query15">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Contract:</legend>
+                    <input type="radio" id="query16" name="query16" value="Month-to-month">
+                    <label for="query16">Month-to-month</label><br>
+                    <input type="radio" id="query16" name="query16" value="One Year">
+                    <label for="query16">ONE YEAR</label><br>
+                    <input type="radio" id="query16" name="query16" value="Two Year">
+                    <label for="query16">TWO YEAR</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Paperless Billing:</legend>
+                    <input type="radio" id="query17" name="query17" value="No">
+                    <label for="query17">NO</label><br>
+
+                    <input type="radio" id="query17" name="query17" value="Yes">
+                    <label for="query17">YES</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Payment Method:</legend>
+                    <input type="radio" id="query18" name="query18" value="Bank transfer (automatic)">
+                    <label for="query18">Bank transfer-automatic</label><br>
+
+                    <input type="radio" id="query18" name="query18" value="Credit card (automatic)">
+                    <label for="query18">Credit card-automatic</label><br>
+
+                    <input type="radio" id="query18" name="query18" value="Electronic check">
+                    <label for="query18">Electronic check</label><br>
+
+                    <input type="radio" id="query18" name="query18" value="Mailed check">
+                    <label for="query18">Mailed check</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Tenure: </legend>
+                    <label for="comment"></label>
+                    <textarea class="form-control" rows="2" id="query19" name="query19" rows="2" cols="5" autofocus>{{query19}}</textarea>
+                </fieldset>
+                <button class="btn" type="submit">Predict</button>
+            </form>
+        </div>
+        <div class="row">
+            <textarea class="form-control" rows="2" id="comment" name="query6" rows="2" cols="5" autofocus>{{output1}}</textarea>
+
+            <textarea class="form-control" rows="2" id="comment" name="query7" rows="2" cols="5" autofocus>{{output2}}</textarea>
+        </div>
+    </div>
+</body>
+
+
+</html>
